@@ -1,0 +1,78 @@
+<script>
+    !function(f,b,e,v,n,t,s) {
+        if(f.fbq) return;
+
+        n = f.fbq = function() {
+            n.callMethod
+                ? n.callMethod.apply(n,arguments)
+                : n.queue.push(arguments)
+        };
+        
+        if(!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        
+        s.parentNode.insertBefore(t,s)
+    }(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+    !(function() {
+        var neoTag = (window.neoTag = window.neoTag || []);
+        if(!neoTag.initialize) {
+            if(neoTag.invoked) {
+                window.console &&
+                console.error &&
+                console.error("Segment snippet included twice.");
+            } else {
+                neoTag.fbq = fbq;
+                neoTag.invoked = !0;
+                neoTag.methods = ["pageview", "track", "page", "setAnonymousId"];
+                neoTag.factory = function(e) {
+                    return function() {
+                        var t = Array.prototype.slice.call(arguments);
+                        t.unshift(e);
+                        neoTag.push(t);
+                        return neoTag;
+                    };
+                };
+                for(var e = 0; e < neoTag.methods.length; e++) {
+                    var key = neoTag.methods[e];
+                    neoTag[key] = neoTag.factory(key);
+                }
+                neoTag.load = function(key, e) {
+                    var t = document.createElement("script");
+                    t.type = "text/javascript";
+                    t.async = !0;
+                    // TODO: Changethis according to folder structure on the server for this file
+                    t.src = "https://test.weeinfusion.com/neotag.js";
+                    var n = document.getElementsByTagName("script")[0];
+                    n.parentNode.insertBefore(t, n);
+                    neoTag._loadOptions = e;
+                };
+                neoTag.endpoint = "https://test.weeinfusion.com"; // TODO: with https and without trailing slash(/)
+                neoTag.apiHost = "https://test.weeinfusion.com"; // TODO: with https and without trailing slash(/)
+                neoTag._cdn = "https://test.weeinfusion.com"; // TODO: with https and without trailing slash(/)
+
+                neoTag._writeKey = "abc"; //currently not in use
+                neoTag.SNIPPET_VERSION = "0.0.1";
+                neoTag.load(neoTag._writeKey);
+                neoTag.page();
+                neoTag.page("Retail Page", "Home", {
+                    title: "Welcome | Initech",
+                    url: "http://www.example.com",
+                    abc: "xyz",
+                });
+                neoTag.track("User Registered", {
+                    plan: "Pro Annual",
+                    accountType: "Facebook",
+                });
+            }
+        }
+    })();
+</script>
